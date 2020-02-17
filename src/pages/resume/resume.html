@@ -7,7 +7,7 @@
 <ion-content padding>
 
   <button *ngIf="!showForm" (click)="clickedAdd()" ion-button>Lisää työkokemus</button>
-
+  <div *ngIf="!showForm"><ion-label>Kokonaistyökokemus: {{totalDurationYears}} v {{durationMonths}} kk</ion-label></div>
 
   <div *ngIf="showForm">
     <ion-item>
@@ -44,7 +44,9 @@
       <ion-card-content>
         {{job.startDate | date: 'dd.MM.yyyy'}} - {{job.endDate | date: 'dd.MM.yyyy'}}
         <br>
-        {{job.jobDescription}}
+        Työn kesto {{job.durationYears}} v {{job.durationMonths}} kk.
+        <br>
+        <div style="white-space:pre-wrap;">{{job.jobDescription}}</div>
       </ion-card-content>
     </ion-card>
   </li>

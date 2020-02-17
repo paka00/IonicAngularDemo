@@ -4,4 +4,7 @@ export class JobExperience {
   endDate: string;
   jobName: String;
   jobDescription: String;
+  duration: number;
+  durationYears: number;
+  durationMonths: number;
 }
