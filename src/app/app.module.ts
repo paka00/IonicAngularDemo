@@ -1,4 +1,3 @@
-import { ToptoolbarComponent } from './../components/toptoolbar/toptoolbar';
 import { ComponentsModule } from './../components/components.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';

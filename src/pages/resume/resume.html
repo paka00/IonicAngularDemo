@@ -6,4 +6,48 @@
 -->
 <ion-content padding>
 
+  <button *ngIf="!showForm" (click)="clickedAdd()" ion-button>Lisää työkokemus</button>
+
+
+  <div *ngIf="showForm">
+    <ion-item>
+      <ion-label>Työnantaja</ion-label>
+      <ion-input [(ngModel)]="employer"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Aloituspäivämäärä</ion-label>
+      <ion-datetime [(ngModel)]="startDate" displayFormat="DD.MM.YYYY" placeholder="Valitse päivämäärä"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lopetuspäivämäärä</ion-label>
+      <ion-datetime [(ngModel)]="endDate" displayFormat="DD.MM.YYYY" placeholder="Valitse päivämäärä"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Työnimike</ion-label>
+      <ion-input [(ngModel)]="jobName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Työtehtävät</ion-label>
+      <ion-textarea [(ngModel)]="jobDescription"></ion-textarea>
+    </ion-item>
+    <button (click)="clickedSave()" ion-button>Tallenna</button>
+  </div>
+
+  <div>
+    <li *ngFor="let job of jobs">
+    <ion-card>
+      <ion-card-header>
+      <ion-card-title>{{job.jobName}}</ion-card-title>
+      <ion-card-title>{{job.employer}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        {{job.startDate | date: 'dd.MM.yyyy'}} - {{job.endDate | date: 'dd.MM.yyyy'}}
+        <br>
+        {{job.jobDescription}}
+      </ion-card-content>
+    </ion-card>
+  </li>
+  </div>
+
 </ion-content>
