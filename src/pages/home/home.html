@@ -1,3 +1,16 @@
 <ion-content>
-<img src="../assets/imgs/cv.png">
+  <div>
+    <img src={{imageLink}} *ngIf="!showButton"></div>
+  <div>
+    <button ion-button *ngIf="!showButton" (click)="showButton=true; imageLink=''">Vaihda profiilikuva</button>
+  </div>
+
+  <div *ngIf="showButton">
+    <ion-item>
+      <ion-label>Kuvan URL</ion-label>
+      <ion-input [(ngModel)]="imageLink"></ion-input>
+    </ion-item>
+
+    <button ion-button (click)="showButton=false">Lisää profiilikuva</button>
+  </div>
 </ion-content>
