@@ -1,4 +1,3 @@
-import { ToptoolbarComponent } from './../components/toptoolbar/toptoolbar';
 import { ComponentsModule } from './../components/components.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -11,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { ProjectsPage } from '../pages/projects/projects';
 import { ResumePage } from '../pages/resume/resume';
 import { TabsPage } from '../pages/tabs/tabs';
+import { ImageModalPage } from './../pages/image-modal/image-modal';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     HomePage,
     ProjectsPage,
     ResumePage,
-    TabsPage
+    TabsPage,
+    ImageModalPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,8 @@ import { TabsPage } from '../pages/tabs/tabs';
     HomePage,
     ProjectsPage,
     ResumePage,
-    TabsPage
+    TabsPage,
+    ImageModalPage
   ],
   providers: [
     StatusBar,

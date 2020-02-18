@@ -6,4 +6,77 @@
 -->
 <ion-content padding>
 
+  <button *ngIf="!showForm" (click)="clickedAdd()" ion-button>Lisää projekti</button>
+
+  <div *ngIf="showForm">
+    <ion-item>
+      <ion-label>Projektin nimi *</ion-label>
+      <ion-input [(ngModel)]="projectName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tilaaja *</ion-label>
+      <ion-input [(ngModel)]="projectClient"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Aloituspäivämäärä *</ion-label>
+      <ion-datetime [(ngModel)]="startDate" displayFormat="DD.MM.YYYY" placeholder="Valitse päivämäärä"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lopetuspäivämäärä *</ion-label>
+      <ion-datetime [(ngModel)]="endDate" displayFormat="DD.MM.YYYY" placeholder="Valitse päivämäärä"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Linkki</ion-label>
+      <ion-input [(ngModel)]="projectLink"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Kuvaus *</ion-label>
+      <ion-textarea [(ngModel)]="projectDescription"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Kuva URL</ion-label>
+      <ion-input [(ngModel)]="imageLink"></ion-input>
+    </ion-item>
+    <button (click)="clickedSave()" ion-button>Tallenna</button>
+  </div>
+
+  <div>
+    <li *ngFor="let project of projects">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{project.name}}</ion-card-title>
+          <ion-card-title>Tilaaja: {{project.client}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-item>
+          {{project.startDate | date: 'dd.MM.yyyy'}} - {{project.endDate | date: 'dd.MM.yyyy'}}
+          <div *ngIf="project.link">
+            <a href={{project.link}} target="_blank">{{project.link}}</a></div>
+            <div style="white-space:pre-wrap;">{{project.description}}</div>
+            <div>
+              <ion-row>
+                <ion-col>
+                  <ion-thumbnail *ngIf="project.imageLink" (click)="onImgClick(project.imageLink)"><img src={{project.imageLink}}></ion-thumbnail>
+                </ion-col>
+                <ion-col>
+                  <ion-thumbnail *ngIf="project.imageLink"><img src={{project.imageLink}}></ion-thumbnail>
+                </ion-col>
+                <ion-col>
+                  <ion-thumbnail *ngIf="project.imageLink"><img src={{project.imageLink}}></ion-thumbnail>
+                </ion-col>
+                <ion-col>
+                  <ion-thumbnail *ngIf="project.imageLink"><img src={{project.imageLink}}></ion-thumbnail>
+                </ion-col>
+                <ion-col>
+                  <ion-thumbnail *ngIf="project.imageLink"><img src={{project.imageLink}}></ion-thumbnail>
+                </ion-col>
+              </ion-row>
+            </div>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </li>
+  </div>
+
 </ion-content>
