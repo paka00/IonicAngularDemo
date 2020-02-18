@@ -26,6 +26,10 @@
     "@ionic-native/splash-screen": "4.20.0",
     "@ionic-native/status-bar": "4.20.0",
     "@ionic/storage": "2.2.0",
+<<<<<<< HEAD
+=======
+    "angular-pdf": "^2.0.0",
+>>>>>>> 9ecb9f689d63fd442354acdf5a4dd2f56d688bf1
     "cordova-android": "7.1.4",
     "cordova-browser": "5.0.4",
     "cordova-plugin-device": "^2.0.3",
@@ -57,7 +61,9 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-file": {},
       "cordova-plugin-document-viewer": {}
