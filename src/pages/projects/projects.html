@@ -33,11 +33,19 @@
       <ion-label>Kuvaus *</ion-label>
       <ion-textarea [(ngModel)]="projectDescription"></ion-textarea>
     </ion-item>
+    <ion-item *ngFor="let image of projectImages; let i = index">
+      <div *ngIf="image">Kuva {{i + 1}}: {{image.title}}, {{image.link}}</div>
+    </ion-item>
+    <ion-item>
+      <ion-label>Kuvan otsikko</ion-label>
+      <ion-input #imageTitle></ion-input>
+    </ion-item>
     <ion-item>
       <ion-label>Kuva URL</ion-label>
-      <ion-input [(ngModel)]="imageLink"></ion-input>
+      <ion-input #imageLink></ion-input>
     </ion-item>
-    <button (click)="clickedSave()" ion-button>Tallenna</button>
+    <button ion-button (click)="saveImage(imageTitle.value, imageLink.value); imageTitle.value = null; imageLink.value = null;" >Lisää kuva</button>
+    <button (click)="clickedSave();" ion-button>Tallenna</button>
   </div>
 
   <div>
@@ -51,25 +59,17 @@
         <ion-card-content>
           <ion-item>
           {{project.startDate | date: 'dd.MM.yyyy'}} - {{project.endDate | date: 'dd.MM.yyyy'}}
+          <br>
+          <br>
           <div *ngIf="project.link">
             <a href={{project.link}} target="_blank">{{project.link}}</a></div>
+            <br>
             <div style="white-space:pre-wrap;">{{project.description}}</div>
+            <br>
             <div>
-              <ion-row>
-                <ion-col>
-                  <ion-thumbnail *ngIf="project.imageLink" (click)="onImgClick(project.imageLink)"><img src={{project.imageLink}}></ion-thumbnail>
-                </ion-col>
-                <ion-col>
-                  <ion-thumbnail *ngIf="project.imageLink"><img src={{project.imageLink}}></ion-thumbnail>
-                </ion-col>
-                <ion-col>
-                  <ion-thumbnail *ngIf="project.imageLink"><img src={{project.imageLink}}></ion-thumbnail>
-                </ion-col>
-                <ion-col>
-                  <ion-thumbnail *ngIf="project.imageLink"><img src={{project.imageLink}}></ion-thumbnail>
-                </ion-col>
-                <ion-col>
-                  <ion-thumbnail *ngIf="project.imageLink"><img src={{project.imageLink}}></ion-thumbnail>
+              <ion-row >
+                <ion-col *ngFor="let image of project.images">
+                  <ion-thumbnail *ngIf="image" (click)="onImgClick(image.title, image.link)"><img src={{image.link}}></ion-thumbnail>
                 </ion-col>
               </ion-row>
             </div>

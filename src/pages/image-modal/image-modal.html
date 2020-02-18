@@ -1,3 +1,14 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title>{{imageTitle}}</ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="closeModal()">
+            <ion-icon name="close-circle" color="primary"></ion-icon>
+          </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
 <ion-content>
 <img src={{imgLink}}>
 </ion-content>

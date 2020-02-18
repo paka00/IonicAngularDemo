@@ -1,3 +1,4 @@
+import { projectImage } from './../../projectImage';
 import { ImageModalPage } from './../image-modal/image-modal';
 import { Project } from './../../project';
 import { Component } from '@angular/core';
@@ -23,8 +24,9 @@ export class ProjectsPage {
   endDate;
   projectLink;
   projectDescription;
-  imageLink;
   projects: Array<Project> = [];
+  projectImages: Array<projectImage> = [];
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastController: ToastController, private modal: ModalController) {
   }
@@ -41,7 +43,14 @@ export class ProjectsPage {
     this.endDate = "";
     this.projectLink = "";
     this.projectDescription = "";
-    this.imageLink = "";
+  }
+
+  saveImage(imageTitle, imageLink){
+
+    let image = new projectImage();
+    image.title = imageTitle;
+    image.link = imageLink;
+    this.projectImages.push(image);
   }
 
   clickedSave() {
@@ -56,7 +65,8 @@ export class ProjectsPage {
       newProject.endDate = this.endDate;
       newProject.link = this.projectLink;
       newProject.description = this.projectDescription;
-      newProject.imageLink = this.imageLink;
+      newProject.images = this.projectImages;
+      console.log(newProject.images);
       this.projects.push(newProject);
       this.projects.sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate));
       this.showForm = false;
@@ -71,8 +81,8 @@ export class ProjectsPage {
     toast.present();
   }
 
-  onImgClick(imgLink: string) {
-    const myModal = this.modal.create(ImageModalPage, { imageLink: imgLink }, {
+  onImgClick(imgTitle: string, imgLink: string) {
+    const myModal = this.modal.create(ImageModalPage, { imageTitle: imgTitle, imageLink: imgLink }, {
       cssClass:"my-modal"
   });
     myModal.present();

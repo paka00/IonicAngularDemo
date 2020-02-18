@@ -15,8 +15,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ImageModalPage {
   imgLink;
+  imageTitle;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.imageTitle = navParams.get('imageTitle')
     this.imgLink = navParams.get('imageLink');
     console.log(this.imgLink);
   }
@@ -24,5 +26,9 @@ export class ImageModalPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ImageModalPage');
   }
+
+  closeModal() {
+    this.navCtrl.pop();
+}
 
 }

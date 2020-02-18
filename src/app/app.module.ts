@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-import { ToptoolbarComponent } from './../components/toptoolbar/toptoolbar';
-=======
->>>>>>> 9ecb9f689d63fd442354acdf5a4dd2f56d688bf1
 import { ComponentsModule } from './../components/components.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -33,14 +28,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
   ],
   imports: [
     BrowserModule,
-<<<<<<< HEAD
-    IonicModule.forRoot(MyApp),
-    ComponentsModule,
-    PdfViewerModule
-=======
     IonicModule.forRoot(MyApp, {tabsPlacement: 'top'}),
     ComponentsModule
->>>>>>> 9ecb9f689d63fd442354acdf5a4dd2f56d688bf1
   ],
   bootstrap: [IonicApp],
   entryComponents: [

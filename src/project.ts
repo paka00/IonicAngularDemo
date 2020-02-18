@@ -1,3 +1,6 @@
+import {projectImage} from './projectImage';
+
+
 export class Project {
   name: string;
   client: string;
@@ -5,5 +8,5 @@ export class Project {
   endDate: string;
   link: String;
   description: String;
-  imageLink: string;
+  images: Array<projectImage>;
 }
